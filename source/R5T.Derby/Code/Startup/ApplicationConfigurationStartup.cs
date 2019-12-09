@@ -12,7 +12,7 @@ using R5T.Scotia.Extensions;
 
 namespace R5T.Derby
 {
-    public abstract class ApplicationConfigurationStartup : ApplicationConfigurationStartupBase
+    public class ApplicationConfigurationStartup : ApplicationConfigurationStartupBase
     {
         public ApplicationConfigurationStartup(ILogger<ApplicationConfigurationStartup> logger)
             : base(logger)
