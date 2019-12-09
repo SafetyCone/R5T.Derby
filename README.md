@@ -1,2 +1,2 @@
 # R5T.Derby
-An opinonated application configuration startup types library.
+An opinionated application configuration startup types library.
