@@ -10,6 +10,10 @@ namespace R5T.Derby.Extensions
 {
     public static class IServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds:
+        /// * <see cref="IConfigurationNameProvider"/>.
+        /// </summary>
         public static IServiceCollection AddDirectConfigurationBasedConfigurationNameProvider(this IServiceCollection services)
         {
             services
