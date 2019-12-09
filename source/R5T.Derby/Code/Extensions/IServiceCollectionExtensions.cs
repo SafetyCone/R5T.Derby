@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using R5T.Ives;
 using R5T.Ives.Configuration;
+using R5T.Scotia.Extensions;
 using R5T.Shrewsbury;
 using R5T.Shrewsbury.Default;
 
@@ -20,6 +21,7 @@ namespace R5T.Derby.Extensions
             services
                 .AddSingleton<IConfigurationNameProvider, DirectConfigurationBasedConfigurationNameProvider>()
                 .AddSingleton<IConfigurationNameToAppSettingsFileNameTokenConverter, DefaultConfigurationNameToAppSettingsFileNameTokenConverter>()
+                .AddUserSecretFilesRivetLocation()
                 ;
 
             return services;
