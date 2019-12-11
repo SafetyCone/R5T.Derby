@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using R5T.Richmond;
 
 using R5T.Derby.Extensions;
-using R5T.Scotia.Extensions;
+using R5T.Leeds;
 
 
 namespace R5T.Derby
@@ -26,6 +26,7 @@ namespace R5T.Derby
         {
             configurationBuilder
                 .AddDefaultAppSettingsJsonFile()
+                .AddConfigurationSpecificAppSettingsJsonFile()
                 ;
         }
 
@@ -37,7 +38,7 @@ namespace R5T.Derby
         {
             services
                 .AddDirectConfigurationBasedConfigurationNameProvider()
-                .AddUserSecretFilesRivetLocation()
+                .UseMachineLocationAwareCustomSecretsDirectoryPath()
                 ;
         }
     }
