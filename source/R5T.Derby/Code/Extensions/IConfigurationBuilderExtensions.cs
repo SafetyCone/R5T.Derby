@@ -3,10 +3,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using R5T.Ives;
 using R5T.Ives.Configuration;
+using R5T.Shrewsbury;
+using R5T.Shrewsbury.Extensions;
 using R5T.Suebia;
 
-using ShrewsburyFileNames = R5T.Shrewsbury.FileNames;
 using ShrewsburyUtilities = R5T.Shrewsbury.Utilities;
 
 
@@ -14,29 +16,19 @@ namespace R5T.Derby.Extensions
 {
     public static class IConfigurationBuilderExtensions
     {
-        /// <summary>
-        /// Adds the default appsettings.json file.
-        /// </summary>
-        public static IConfigurationBuilder AddDefaultAppSettingsJsonFile(this IConfigurationBuilder configurationBuilder)
+        public static IConfigurationBuilder AddConfigurationSpecificAppSettingsJsonFile(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, bool optional = false)
         {
-            configurationBuilder.AddJsonFile(ShrewsburyFileNames.DefaultAppSettingsJsonFileName);
+            var configurationNameProvider = configurationServiceProvider.GetRequiredService<IConfigurationNameProvider>();
 
-            return configurationBuilder;
-        }
+            var configurationName = configurationNameProvider.GetConfigurationName();
 
-        public static IConfigurationBuilder AddConfigurationSpecificAppSettingsJsonFile(this IConfigurationBuilder configurationBuilder)
-        {
-            var intermediateConfiguration = configurationBuilder.Build();
+            var configurationNameToAppSettingFileTokenConverter = configurationServiceProvider.GetRequiredService<IConfigurationNameToAppSettingsFileNameTokenConverter>();
 
-            var configurationName = intermediateConfiguration[DirectConfigurationBasedConfigurationNameProvider.ConfigurationNameConfigurationKey];
+            var configurationNameAppSettingsFileNameToken = configurationNameToAppSettingFileTokenConverter.ConvertConfigurationNameToAppSettingsFileNameToken(configurationName);
 
-            // No validation of configuration name nor conversion to appsettings file-name token. Just direct use.
+            var configurationNameSpecificAppSettingsFileName = ShrewsburyUtilities.GetConfigurationNameSpecificAppSettingsJsonFileName(configurationNameAppSettingsFileNameToken);
 
-            var configurationNameSpecificAppSettingsJsonFileName = ShrewsburyUtilities.GetConfigurationNameSpecificAppSettingsJsonFileName(configurationName);
-
-            // No directory path specification, just assume configuration file is in executable directory.
-
-            configurationBuilder.AddJsonFile(configurationNameSpecificAppSettingsJsonFileName);
+            configurationBuilder.AddAppSettingsDirectoryJsonFile(configurationServiceProvider, configurationNameSpecificAppSettingsFileName, optional);
 
             return configurationBuilder;
         }

@@ -5,9 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using R5T.Richmond;
+using R5T.Leeds;
+using R5T.Shrewsbury.Extensions;
 
 using R5T.Derby.Extensions;
-using R5T.Leeds;
 
 
 namespace R5T.Derby
@@ -22,18 +23,17 @@ namespace R5T.Derby
         /// <summary>
         /// Adds the default appsettings.json file.
         /// </summary>
-        protected override void ConfigureConfigurationBody(IConfigurationBuilder configurationBuilder)
+        protected override void ConfigureConfigurationBody(IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider)
         {
             configurationBuilder
-                .AddDefaultAppSettingsJsonFile()
-                .AddConfigurationSpecificAppSettingsJsonFile()
+                .AddDefaultAppSettingsJsonFile(configurationServiceProvider)
+                .AddConfigurationSpecificAppSettingsJsonFile(configurationServiceProvider, true) // Make the configuration-name-specific appsettings file optional since all configuration might just be in the default appsettings file.
                 ;
         }
 
         /// <summary>
         /// Adds direct configuration-based configuration-name provider and custom user secret files location.
         /// </summary>
-        /// <param name="services"></param>
         protected override void ConfigureServicesBody(IServiceCollection services)
         {
             services
