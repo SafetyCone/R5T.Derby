@@ -9,5 +9,6 @@
     <ProjectReference Include="..\..\..\R5T.Leeds\source\R5T.Leeds\R5T.Leeds.csproj" />
     <ProjectReference Include="..\..\..\R5T.Richmond\source\R5T.Richmond\R5T.Richmond.csproj" />
     <ProjectReference Include="..\..\..\R5T.Shrewsbury.Default\source\R5T.Shrewsbury.Default\R5T.Shrewsbury.Default.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Shrewsbury.Extensions\source\R5T.Shrewsbury.Extensions\R5T.Shrewsbury.Extensions.csproj" />
   </ItemGroup>
 </Project>
