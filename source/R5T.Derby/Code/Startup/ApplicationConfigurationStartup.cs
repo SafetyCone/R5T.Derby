@@ -6,6 +6,10 @@ using Microsoft.Extensions.Logging;
 
 using R5T.Richmond;
 using R5T.Leeds;
+using R5T.Lombardy;
+using R5T.Macommania.Default;
+using R5T.Shrewsbury;
+using R5T.Shrewsbury.Default;
 using R5T.Shrewsbury.Extensions;
 
 using R5T.Derby.Extensions;
@@ -37,6 +41,10 @@ namespace R5T.Derby
         protected override void ConfigureServicesBody(IServiceCollection services)
         {
             services
+                .AddSingleton<IStringlyTypedPathOperator, StringlyTypedPathOperator>()
+                .UseDefaultExecutableFileDirectoryPathProvider<StringlyTypedPathOperator>()
+                .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
+                .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()
                 .AddDirectConfigurationBasedConfigurationNameProvider()
                 .UseMachineLocationAwareCustomSecretsDirectoryPath()
                 ;
