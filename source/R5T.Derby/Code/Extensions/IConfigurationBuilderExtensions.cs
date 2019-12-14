@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using R5T.Ives;
-using R5T.Ives.Configuration;
 using R5T.Shrewsbury;
 using R5T.Shrewsbury.Extensions;
 using R5T.Suebia;
@@ -16,6 +15,16 @@ namespace R5T.Derby.Extensions
 {
     public static class IConfigurationBuilderExtensions
     {
+        public static IConfigurationBuilder AddDefaultAndConfigurationSpecificAppSettingsJsonFiles(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, bool configurationSpecificIsOptional = false)
+        {
+            configurationBuilder
+                .AddDefaultAppSettingsJsonFile(configurationServiceProvider)
+                .AddConfigurationSpecificAppSettingsJsonFile(configurationServiceProvider, configurationSpecificIsOptional)
+                ;
+
+            return configurationBuilder;
+        }
+
         public static IConfigurationBuilder AddConfigurationSpecificAppSettingsJsonFile(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, bool optional = false)
         {
             var configurationNameProvider = configurationServiceProvider.GetRequiredService<IConfigurationNameProvider>();
@@ -33,7 +42,7 @@ namespace R5T.Derby.Extensions
             return configurationBuilder;
         }
 
-        public static IConfigurationBuilder AddRivetUserSecretsFile(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, string secretsFileName)
+        public static IConfigurationBuilder AddRivetUserSecretsJsonFile(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, string secretsFileName)
         {
             var secretsFilePathProvider = configurationServiceProvider.GetRequiredService<ISecretsFilePathProvider>();
 
