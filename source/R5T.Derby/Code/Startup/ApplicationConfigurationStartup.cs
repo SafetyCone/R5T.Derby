@@ -25,7 +25,7 @@ namespace R5T.Derby
         }
 
         /// <summary>
-        /// Adds the default appsettings.json file.
+        /// Adds default and configuration name-specific appsettings.json files.
         /// </summary>
         protected override void ConfigureConfigurationBody(IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider)
         {
@@ -36,12 +36,15 @@ namespace R5T.Derby
         }
 
         /// <summary>
-        /// Adds direct configuration-based configuration-name provider and custom user secret files location.
+        /// Adds:
+        /// * Machine location-aware custom user secret files location.
+        /// * Configuration-based configuration-name provider.
         /// </summary>
         protected override void ConfigureServicesBody(IServiceCollection services)
         {
             services
                 .AddSingleton<IStringlyTypedPathOperator, StringlyTypedPathOperator>()
+
                 .UseDefaultExecutableFileDirectoryPathProvider<StringlyTypedPathOperator>()
                 .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
                 .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()

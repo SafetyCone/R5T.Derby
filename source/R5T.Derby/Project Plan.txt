@@ -2,7 +2,8 @@ R5T.Derby - An opinionated application configuration startup types library.
 
 Provides an application configuration startup type that:
 
-* Adds the default appsettings.json file to it's configuration.
+* Adds the default and configuration name-specific appsettings.json file to it's configuration.
+* Machine location-aware custom user secrets file provider to its services.
 * Adds the direct configuration-based configuration-name provider service to its services.
 
 This allows use of the configuration-name from the default appsettings.json file to add a configuration name-specific appsettings.json file to the configuration of the actual startup in two-stage application DI-container configuration.
