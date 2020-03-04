@@ -44,7 +44,7 @@ namespace R5T.Derby.Extensions
 
         public static IConfigurationBuilder AddRivetUserSecretsJsonFile(this IConfigurationBuilder configurationBuilder, IServiceProvider configurationServiceProvider, string secretsFileName)
         {
-            var secretsFilePathProvider = configurationServiceProvider.GetRequiredService<ISecretsFilePathProvider>();
+            var secretsFilePathProvider = configurationServiceProvider.GetRequiredService<ISecretsDirectoryFilePathProvider>();
 
             var secretsFilePath = secretsFilePathProvider.GetSecretsFilePath(secretsFileName);
 
