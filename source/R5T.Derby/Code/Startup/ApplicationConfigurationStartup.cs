@@ -45,7 +45,9 @@ namespace R5T.Derby
             services
                 .AddSingleton<IStringlyTypedPathOperator, StringlyTypedPathOperator>()
 
-                .UseDefaultExecutableFileDirectoryPathProvider<StringlyTypedPathOperator>()
+                .AddDefaultExecutableFileDirectoryPathProvider(
+                    services.AddDefaultExecutableFilePathProviderAction(),
+                    services.AddDefaultStringlyTypedPathOperatorAction())
                 .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
                 .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()
                 .AddDirectConfigurationBasedConfigurationNameProvider()
