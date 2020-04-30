@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+using R5T.Dacia;
 using R5T.Richmond;
 using R5T.Leeds;
 using R5T.Lombardy;
@@ -43,11 +44,10 @@ namespace R5T.Derby
         protected override void ConfigureServicesBody(IServiceCollection services)
         {
             services
-                .AddSingleton<IStringlyTypedPathOperator, StringlyTypedPathOperator>()
-
+                .AddDefaultStringlyTypedPathOperator()
                 .AddDefaultExecutableFileDirectoryPathProvider(
                     services.AddDefaultExecutableFilePathProviderAction(),
-                    services.AddDefaultStringlyTypedPathOperatorAction())
+                    ServiceAction<IStringlyTypedPathOperator>.AlreadyAdded)
                 .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
                 .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()
                 .AddDirectConfigurationBasedConfigurationNameProvider()
