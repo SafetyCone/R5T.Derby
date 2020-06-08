@@ -19,7 +19,7 @@ namespace R5T.Derby.Extensions
         {
             services
                 .AddSingleton<IConfigurationNameProvider, DirectConfigurationBasedConfigurationNameProvider>()
-                .AddSingleton<IConfigurationNameToAppSettingsFileNameTokenConverter, DefaultConfigurationNameToAppSettingsFileNameTokenConverter>()
+                .AddSingleton<IConfigurationNameToAppSettingsFileNameTokenConverter, ConfigurationNameToAppSettingsFileNameTokenConverter>()
                 ;
 
             return services;

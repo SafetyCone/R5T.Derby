@@ -18,7 +18,7 @@ namespace R5T.Derby
 {
     public class ApplicationConfigurationConfigurationStartup : ApplicationConfigurationStartupBase
     {
-        public ApplicationConfigurationConfigurationStartup(ILogger<ApplicationConfigurationStartupBase> logger)
+        public ApplicationConfigurationConfigurationStartup(ILogger<ApplicationConfigurationConfigurationStartup> logger)
             : base(logger)
         {
         }
@@ -39,7 +39,10 @@ namespace R5T.Derby
                     ServiceAction<IStringlyTypedPathOperator>.AlreadyAdded)
                 .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
                 .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()
+                .AddSingleton<IDefaultAppSettingsJsonFilePathProvider, DefaultAppSettingsJsonFilePathProvider>()
                 .AddDirectConfigurationBasedConfigurationNameProvider()
+                .AddSingleton<IConfigurationNameSpecificAppSettingsJsonFileNameProvider, ConfigurationNameSpecificAppSettingsJsonFileNameProvider>()
+                .AddSingleton<IConfigurationNameSpecificAppSettingsJsonFilePathProvider, ConfigurationNameSpecificAppSettingsJsonFilePathProvider>()
                 ;
         }
     }

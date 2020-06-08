@@ -51,7 +51,7 @@ namespace R5T.Derby
                 .AddSingleton<IAppSettingsDirectoryPathProvider, ExecutableFileDirectoryAppSettingsDirectoryPathProvider>()
                 .AddSingleton<IDefaultAppSettingsJsonFileNameProvider, DefaultAppSettingsJsonFileNameProvider>()
                 .AddDirectConfigurationBasedConfigurationNameProvider()
-                .UseMachineLocationAwareCustomSecretsDirectoryPath()
+                .AddMachineLocationAwareSecretsDirectoryPathProvider()
                 ;
         }
     }
