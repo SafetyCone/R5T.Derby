@@ -36,7 +36,7 @@ namespace R5T.Derby
         {
             var dropboxDirectoryPath = this.DropboxDirectoryPathProvider.GetDropboxDirectoryPath();
 
-            var rivetOrganizationDropboxDirectoryPath = this.OrganizationStringlyTypedPathOperator.GetOrganizationDirectoryPath(dropboxDirectoryPath, RivetOrganization.Instance.Value);
+            var rivetOrganizationDropboxDirectoryPath = this.OrganizationStringlyTypedPathOperator.GetOrganizationDirectoryPath(dropboxDirectoryPath, RivetOrganization.Instance);
 
             var sharedRivetOrganizationDropboxDirectoryPath = this.StringlyTypedPathOperator.GetDirectoryPath(rivetOrganizationDropboxDirectoryPath, SharedRivetOrganizationDirectoryPathProvider.SharedDirectoryName);
 
