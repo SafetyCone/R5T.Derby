@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using R5T.Alamania;
 using R5T.Bulgaria;
@@ -6,13 +6,16 @@ using R5T.Costobocia;
 using R5T.Lombardy;
 using R5T.Ostrogothia.Rivet;
 
+using R5T.T0064;
+
 
 namespace R5T.Derby
 {
     /// <summary>
     /// Provides the Rivet organization directory path from the Dropbox directory path (provided by the codenamed Bulgaria project).
     /// </summary>
-    public class SharedRivetOrganizationDirectoryPathProvider : IRivetOrganizationDirectoryPathProvider
+    [ServiceImplementationMarker]
+    public class SharedRivetOrganizationDirectoryPathProvider : IRivetOrganizationDirectoryPathProvider, IServiceImplementation
     {
         public const string SharedDirectoryName = "Shared"; // Should be in an ISharedDirectoryNameConventions service library.
 

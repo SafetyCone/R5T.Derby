@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R5T.Derby.Construction", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R5T.Derby.Testing", "R5T.Derby.Testing\R5T.Derby.Testing.csproj", "{C56A5559-542D-40A2-A9AF-8D57303F4BF5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Dependencies", "_Dependencies", "{CCA6C4E2-6653-4D27-8865-1F8B8B447199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R5T.T0064", "..\..\R5T.T0064\source\R5T.T0064\R5T.T0064.csproj", "{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +62,20 @@ Global
 		{C56A5559-542D-40A2-A9AF-8D57303F4BF5}.Release|x64.Build.0 = Release|Any CPU
 		{C56A5559-542D-40A2-A9AF-8D57303F4BF5}.Release|x86.ActiveCfg = Release|Any CPU
 		{C56A5559-542D-40A2-A9AF-8D57303F4BF5}.Release|x86.Build.0 = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|x64.Build.0 = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|x64.Build.0 = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A50B51E1-81A9-4300-AFEC-9EDB17E245DA} = {CCA6C4E2-6653-4D27-8865-1F8B8B447199}
 	EndGlobalSection
 EndGlobal
